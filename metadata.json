@@ -1,0 +1,6 @@
+{
+  "name": "더문짐 VIP 예약",
+  "description": "더문짐 & 그룹PT 파트너사 VIP 고객님을 위한 재활/기능회복 클래스 예약 페이지",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
