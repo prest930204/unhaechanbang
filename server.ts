@@ -1,10 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import { createServer as createViteServer } from 'vite';
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 async function createServer() {
   const app = express();
@@ -54,9 +51,10 @@ async function createServer() {
   });
 
   if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.resolve(__dirname, 'client')));
+    const distPath = path.join(process.cwd(), 'dist', 'client');
+    app.use(express.static(distPath));
     app.use('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'client', 'index.html'));
+      res.sendFile(path.join(distPath, 'index.html'));
     });
   } else {
     const vite = await createViteServer({
